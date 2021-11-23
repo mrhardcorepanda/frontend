@@ -1,13 +1,16 @@
 import axios from "axios";
 import React, {Component} from "react";
+import App from "../App";
 import RecordsList from './RecordsList';
+
 export default class ListPersons extends Component {
+    
     constructor(props){
         super(props);
         this.state = {persons: []};
     }
     componentDidMount (){
-        axios.get('http://localhost:8080/api/person/all')
+        axios.get('/api/person/all')
             .then(response =>{
                 this.setState({persons: response.data});
             })
