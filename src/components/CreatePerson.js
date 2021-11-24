@@ -3,6 +3,7 @@ import axios from 'axios';
 export default class CreatePerson extends Component {
 
     constructor(props){
+
         super(props);
         this.onChangeID = this.onChangeID.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
@@ -10,14 +11,15 @@ export default class CreatePerson extends Component {
         this.onChangeHomeworld = this.onChangeHomeworld.bind(this);
         this.onChangeShips_ids = this.onChangeShips_ids.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
+        
         this.state = {
             id: '',
             name: '',
             gender: '',
             homeworld: '',
-            ships_ids: ''
+            ships_id: ''
         }
+
     }
     onChangeID(e) {
         this.setState({
@@ -41,21 +43,21 @@ export default class CreatePerson extends Component {
     }
     onChangeShips_ids(e) {
         this.setState({
-            ships_ids: e.target.value
+            ships_id: e.target.value
         })
     }
 
     onSubmit(e){
         e.preventDefault();
-        
+        console.log("test")
         const obj = {
             id: this.state.id,
             name: this.state.name,
             gender: this.state.gender,
             homeworld: this.state.homeworld,
-            ships_ids: this.state.ships_ids
+            ships_id: this.state.ships_id
         };
-        axios.post('http://localhost:8080/api/create_person', obj)
+        axios.post('/api/create_person', obj)
         .then(res => console.log(res.data));
         console.log(obj)
     }
@@ -74,26 +76,26 @@ export default class CreatePerson extends Component {
                     <div className="form-group">
                         <label>Name: </label>
                         <input type="text" className="form-control"
-                        value={this.state.name}
-                        onChange={this.onChangeName}/>
+                            value={this.state.name}
+                            onChange={this.onChangeName}/>
                     </div>
                     <div className="form-group">
                         <label>Gender: </label>
                         <input type="text" className="form-control"
-                        value={this.state.gender}
-                        onChange={this.onChangeGender}/>
+                            value={this.state.gender}
+                            onChange={this.onChangeGender}/>
                     </div>
                     <div className="form-group">
                         <label>Homeworld: </label>
                         <input type="text" className="form-control"
-                        value={this.state.homeworld}
-                        onChange={this.onChangeHomeworld}/>
+                            value={this.state.homeworld}
+                            onChange={this.onChangeHomeworld}/>
                     </div>
                     <div className="form-group">
                         <label>Ships_ids: </label>
                         <input type="text" className="form-control"
-                        value={this.state.ships_ids}
-                        onChange={this.onChangeShips_ids}/>
+                            value={this.state.ships_id}
+                            onChange={this.onChangeShips_ids}/>
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Register Person" className="btn btn-primary"/> 

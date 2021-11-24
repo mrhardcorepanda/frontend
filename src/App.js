@@ -47,7 +47,7 @@ function App() {
         <h2>Welcome to diploma project!!!</h2> <br/>
         
         <Switch>
-            <Route exact path='/create_person' component={CreatePerson}/>
+            <Route path='/create_person' component={CreatePerson}/>
             <Route path='/create_ship' component={CreateShip}/>
             <Route path='/list_persons' component={ListPersons}/>
             <Route path='/list_ships' component={ListShips}/>

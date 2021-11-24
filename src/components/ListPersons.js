@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, {Component} from "react";
-import App from "../App";
 import RecordsList from './RecordsList';
 
 export default class ListPersons extends Component {

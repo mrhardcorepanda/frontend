@@ -1,6 +1,17 @@
+import axios from 'axios';
 import React, {Component} from 'react';
+import { Redirect } from 'react-router';
 export default class RecordsList extends Component {
+    constructor(props){
+        super(props);
+        this.delete = this.delete.bind(this);
+    }
+    delete(){
+        axios.get('/api/persondel/'+this.props.obj.id)
+        .catch(err => console.log(err))
+    }
     render(){
+
         return (
             <tr>
                 <td>
@@ -16,13 +27,13 @@ export default class RecordsList extends Component {
                     {this.props.obj.homeworld}
                 </td>
                 <td>
-                    {this.props.obj.ships_ids}
+                    {this.props.obj.ships_id}
                 </td>
                 <td>
                     <button className="btn btn-primary">Edit</button>
                 </td>
                 <td>
-                    <button className="btn btn-danger">Delete</button>
+                    <button onClick={this.delete} className="btn btn-danger">Delete</button>
                 </td>
             </tr>
         )
